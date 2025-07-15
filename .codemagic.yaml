@@ -1,0 +1,15 @@
+workflows:
+  android-build:
+    name: Build APK
+    max_build_duration: 15
+    environment:
+      vars:
+        PROJECT_DIR: "MedicineTrackerApp"
+      java: 17
+    scripts:
+      - name: Build APK with Gradle
+        script: |
+          cd $PROJECT_DIR
+          ./gradlew assembleDebug
+    artifacts:
+      - MedicineTrackerApp/app/build/outputs/**/*.apk
